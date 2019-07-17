@@ -1,6 +1,7 @@
 require "cognito_sync_service/version"
 
 module CognitoSyncService
-  class Error < StandardError; end
-  # Your code goes here...
+  def self.awesome?
+    puts "Not yet!"
+  end
 end
