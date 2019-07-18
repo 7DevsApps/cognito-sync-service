@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'cognito_sync_service/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'cognito_sync_service'
+  spec.name          = 'cognito-sync-service'
   spec.version       = CognitoSyncService::VERSION
   spec.authors       = ['Mark Osipenko']
   spec.email         = ['mark.osipenko@gmail.com']
