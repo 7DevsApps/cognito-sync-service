@@ -1,0 +1,58 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - '*.gemspec'
+    - 'Rakefile'
+
+ModuleLength:
+  Enabled: false
+
+LineLength:
+  Enabled: false
+
+StringLiterals:
+  EnforcedStyle: single_quotes
+  Enabled: false
+
+Layout/DotPosition:
+  EnforcedStyle: leading
+  Enabled: true
+
+Documentation:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 40
+  Enabled: true
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  Enabled: true
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 320
+  Enabled: true
+
+Metrics/PerceivedComplexity:
+  Max: 12
+  Enabled: true
+
+Metrics/CyclomaticComplexity:
+  Max: 12
+  Enabled: true
+
+Metrics/ParameterLists:
+  Max: 10
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+  Enabled: true
+
+Naming/UncommunicativeMethodParamName:
+  Enabled: false
