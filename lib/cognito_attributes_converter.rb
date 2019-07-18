@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module CognitoAttributesConverter
   attr_reader :attributes, :new_attrs
 

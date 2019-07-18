@@ -14,17 +14,17 @@ RSpec.describe CognitoAttributesConverter do
 
   describe '.convert_to_cognito' do
     let(:attrs1) { { email: "sample@gmail.com", phone_number: "+3123123123", disabled_at: "2020-10-10", restored_at: "2020-10-10" } }
-    let(:attrs2) { { "email" => "sample@gmail.com", "phone_number" => "+3123123123", "disabled_at" => "2020-10-10", "restored_at" => "2020-10-10"} }
+    let(:attrs2) { { "email" => "sample@gmail.com", "phone_number" => "+3123123123", "disabled_at" => "2020-10-10", "restored_at" => "2020-10-10" } }
 
     let(:user) { UserExample.new }
-    let(:cognito_attrs1) {
+    let(:cognito_attrs1) do
       [
-        {"name" => "email",        "value" => "sample@gmail.com"},
-        {"name" => "phone_number", "value" => "+3123123123"},
-        {"name" => "custom:disabled_at",  "value" => "2020-10-10"},
-        {"name" => "custom:restored_at",  "value" => "2020-10-10"}
+        { "name" => "email",        "value" => "sample@gmail.com" },
+        { "name" => "phone_number", "value" => "+3123123123" },
+        { "name" => "custom:disabled_at",  "value" => "2020-10-10" },
+        { "name" => "custom:restored_at",  "value" => "2020-10-10" }
       ]
-    }
+    end
 
     context do
       it { expect(user.convert_to_cognito(attrs1)).to eq(cognito_attrs1) }
