@@ -1,40 +1,47 @@
 # frozen_string_literal: true
 
 module CognitoAttributesConverter
-  attr_reader :attributes, :new_attrs
+  def converted_attributes(attrs)
+    convert_to_cognito(attrs, new_attrs)
+  end
 
-  def convert_to_cognito(attrs, new_attrs = {})
-    cognito_attrs = attrs.merge(new_attrs).map { |k, v| [k.to_s, v] }.to_h
+  def convert_to_cognito(attrs)
+    cognito_attrs = attrs.map { |k, v| [k, v] }.to_h
 
     cognito_attrs.map do |k, v|
-      { "name" => cognito_key_name(k), "value" => v } if cognito_key?(k) && v
+      { name: cognito_key_name(k), value: v } if cognito_key?(k) && v
     end.compact
   end
 
+  # name of attribute in cognito pool
   def cognito_key_name(key)
-    return "custom:#{key}" if cognito_custom_attr_keys.map(&:to_s).include?(key)
+    return "custom:#{key}" if list_cognito_custom_attr_keys.include?(key.to_s)
 
-    key
+    key.to_s
   end
 
   def cognito_key?(key)
-    cognito_attr_keys.include?(key)
+    list_cognito_attr_keys.include?(key.to_s)
   end
 
-  def camel_case(k)
-    k = k.split("_").map(&:capitalize).join
-    # k[0] = k[0].downcase
-    k
+  def list_cognito_attr_keys
+    list_cognito_default_attr_keys + list_cognito_custom_attr_keys
   end
 
-  def cognito_attr_keys
-    cognito_default_attr_keys.map(&:to_s) + cognito_custom_attr_keys.map(&:to_s)
+  def list_cognito_default_attr_keys
+    cognito_default_attr_keys.map(&:to_s)
   end
 
+  def list_cognito_custom_attr_keys
+    cognito_custom_attr_keys.map(&:to_s)
+  end
+
+  # redefine this methods in you model if you want to store special attributes
   def cognito_default_attr_keys
-    %w[email phone_number] # username should not be in user_attributes hash, see CognitoService.rb:7
+    %w[email phone_number]
   end
 
+  # redefine this methods in you model if you want to store special custom attributes
   def cognito_custom_attr_keys
     %w[]
   end
