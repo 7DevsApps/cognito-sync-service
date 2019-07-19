@@ -18,8 +18,7 @@ RSpec.describe CognitoAttributesConverter do
 
   let(:user) { UserExample.new }
 
-  describe '.converted_attributes' do
-    
+  xdescribe '.converted_attributes' do
   end
 
   describe '.convert_to_cognito' do
