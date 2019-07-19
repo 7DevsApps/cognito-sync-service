@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require 'cognito_sync_service/version'
-require 'cognito_attributes_handler.rb'
+require 'cognito_attributes_converter.rb'
 require 'cognito_pools_initializer.rb'
 require 'cognito_provider.rb'
 
 module CognitoSyncService
-  include ::CognitoAttributesHandler
+  include ::CognitoAttributesConverter
   include ::CognitoPoolsInitializer
   include ::CognitoProvider
 
