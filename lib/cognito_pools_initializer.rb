@@ -7,11 +7,11 @@
 #    web_client_id: "web_client_id"
 
 module CognitoPoolsInitializer
-  def web_pool_id
-    @web_pool_id ||= Rails.application.credentials.dig(Rails.env.to_sym, :aws, :web_pool)
+  def web_pool_id(env_key = 'development')
+    @web_pool_id ||= ENV[env_key]['aws']['web_pool']
   end
 
-  def web_client_id
-    @web_client_id ||= Rails.application.credentials.dig(Rails.env.to_sym, :aws, :web_client_id)
+  def web_client_id(env_key = 'development')
+    @web_client_id ||= ENV[env_key]['aws']['web_client_id']
   end
 end

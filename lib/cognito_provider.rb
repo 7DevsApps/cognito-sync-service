@@ -11,7 +11,7 @@ require 'aws-sdk-cognitoidentityprovider'
 
 module CognitoProvider
   def cognito_provider(env_key = 'development')
-  ::Aws::CognitoIdentityProvider::Client.new(
+    ::Aws::CognitoIdentityProvider::Client.new(
       access_key_id: ENV[env_key]['aws']['access_key_id'],
       secret_access_key: ENV[env_key]['aws']['secret_access_key'],
       region: ENV[env_key]['aws']['region']

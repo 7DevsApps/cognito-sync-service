@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
 require 'cognito_attributes_converter.rb'
 
 RSpec.describe CognitoAttributesConverter do
