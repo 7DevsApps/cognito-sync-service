@@ -2,7 +2,7 @@
 
 module CognitoAttributesConverter
   def converted_attributes(attrs)
-    convert_to_cognito(attrs, new_attrs)
+    convert_to_cognito(attrs)
   end
 
   def convert_to_cognito(attrs)
