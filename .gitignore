@@ -7,5 +7,7 @@
 /spec/reports/
 /tmp/
 
+.evn
+
 # rspec failure tracking
 .rspec_status
