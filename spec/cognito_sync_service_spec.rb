@@ -19,14 +19,24 @@ RSpec.describe CognitoSyncService do
 
   context '#ca_create!' do
     context 'with valid phone_number in username' do
-      let!(:username) { "+3333333334" }
-      let!(:attrs ) { { phone_number: username } }
-      let(:user) do
-        UserExample.ca_delete!(username)
-        UserExample.ca_create!(attrs, username)
-      end
+      let!(:username) { "+3333333333" }
+      let!(:attrs) { { phone_number: username } }
+      let(:user) { UserExample.ca_create!(attrs, username) }
 
-      it { expect(convert_from_cognito(user)).to eq(OpenStruct.new(phone_number: "+3333333334")) }
+      it { expect(convert_from_cognito(user)).to eq(OpenStruct.new(phone_number: "+3333333333")) }
+
+      after { UserExample.ca_delete!(username) }
+    end
+  end
+
+  context '#ca_delete!' do
+    context 'by phone_number as username' do
+      before { UserExample.ca_create!(attrs, username) }
+
+      let!(:username) { "+3333333333" }
+      let!(:attrs) { { phone_number: username } }
+
+      it { expect(UserExample.ca_delete!(username).to_h).to eq({}) }
     end
   end
 end

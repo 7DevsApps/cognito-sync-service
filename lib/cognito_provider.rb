@@ -27,4 +27,3 @@ module CognitoProvider
   #   )
   # end
 end
-
