@@ -20,6 +20,30 @@ module CognitoAttributesConverter
     key.to_s
   end
 
+  def convert_from_cognito(user_struct)
+    cognito_attrs = user_struct.to_h
+
+    user_attributes(cognito_attrs)
+  end
+
+  def user_attributes(cognito_attrs)
+    if cognito_attrs.key?(:user_attributes)
+      user_attrs = cognito_attrs.delete(:user_attributes)
+      common_attrs = cognito_attrs
+    elsif cognito_attrs.key?(:attributes)
+      user_attrs = cognito_attrs.delete(:attributes)
+      common_attrs = cognito_attrs
+    end
+
+    list_cognito_attr_keys.map do |key|
+      (user_attrs.find do |a|
+        common_attrs[key.to_s] = a[:value] if a[:name] == cognito_key_name(key)
+      end)
+    end
+
+    Hash[common_attrs.map { |k, v| [k.to_s, v] }]
+  end
+
   def cognito_key?(key)
     list_cognito_attr_keys.include?(key.to_s)
   end

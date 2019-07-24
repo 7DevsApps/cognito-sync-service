@@ -4,7 +4,10 @@ require 'cognito_attributes_converter.rb'
 
 RSpec.describe CognitoAttributesConverter do
   class UserExample
+    extend ::CognitoSyncService
     include ::CognitoAttributesConverter
+    include ::CognitoProvider
+    include ::CognitoPoolsInitializer
 
     def cognito_default_attr_keys
       [:email, "phone_number"]
@@ -57,6 +60,28 @@ RSpec.describe CognitoAttributesConverter do
       it { expect(user.convert_to_cognito(attrs1)).to eq(cognito_attrs1) }
       it { expect(user.convert_to_cognito(attrs2)).to eq(cognito_attrs1) }
     end
+  end
+
+  describe '.user_attributes' do
+    before { UserExample.ca_create!(attrs, username) }
+    let!(:username) { "+3333333333" }
+    let!(:attrs) { { phone_number: username } }
+    let(:user) { UserExample.cognito_provider.admin_get_user(user_pool_id: UserExample.web_pool_id, username: username).to_h }
+
+    it { expect(UserExample.user_attributes(user).keys).to match_array(%w[phone_number enabled user_last_modified_date user_create_date user_status username]) }
+
+    after { UserExample.ca_delete!(username) }
+  end
+
+  describe '.convert_from_cognito' do
+    before { UserExample.ca_create!(attrs, username) }
+    let!(:username) { "+3333333333" }
+    let!(:attrs) { { phone_number: username } }
+    let(:user) { UserExample.cognito_provider.admin_get_user(user_pool_id: UserExample.web_pool_id, username: username) }
+
+    it { expect(UserExample.convert_from_cognito(user).keys).to match_array(%w[phone_number enabled user_last_modified_date user_create_date user_status username]) }
+
+    after { UserExample.ca_delete!(username) }
   end
 
   describe '.cognito_key_name' do

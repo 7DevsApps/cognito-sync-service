@@ -39,4 +39,30 @@ RSpec.describe CognitoSyncService do
       it { expect(UserExample.ca_delete!(username).to_h).to eq({}) }
     end
   end
+
+  context '#ca_find!' do
+    context 'by phone_number as username' do
+      before { UserExample.ca_create!(attrs, username) }
+
+      let!(:username) { "+3333333333" }
+      let!(:attrs) { { phone_number: username } }
+      let!(:user) { UserExample.ca_find!(username) }
+
+      it { expect(user.keys).to eq(%w[username user_create_date user_last_modified_date enabled user_status phone_number]) }
+
+      after { UserExample.ca_delete!(username) }
+    end
+
+    context 'by email as username' do
+      before { UserExample.ca_create!(attrs, username) }
+
+      let!(:username) { "qwe@qwe.com" }
+      let!(:attrs) { { email: username } }
+      let!(:user) { UserExample.ca_find!(username) }
+
+      it { expect(user.keys).to eq(%w[username user_create_date user_last_modified_date enabled user_status email]) }
+
+      after { UserExample.ca_delete!(username) }
+    end
+  end
 end
