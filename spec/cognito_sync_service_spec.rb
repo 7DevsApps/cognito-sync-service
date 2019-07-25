@@ -19,50 +19,53 @@ RSpec.describe CognitoSyncService do
 
   context '#ca_create!' do
     context 'with valid phone_number in username' do
-      let!(:username) { "+3333333333" }
-      let!(:attrs) { { phone_number: username } }
-      let(:user) { UserExample.ca_create!(attrs, username) }
+      let!(:phone_number) { "+3333333333" }
+      let!(:attrs) { { phone_number: phone_number } }
+      let(:user) { UserExample.ca_create!(attrs, phone_number) }
 
-      it { expect(convert_from_cognito(user)).to eq(OpenStruct.new(phone_number: "+3333333333")) }
+      subject { UserExample.convert_from_cognito(user) }
 
-      after { UserExample.ca_delete!(username) }
+      it { expect(subject.keys).to match_array(%w[enabled user_create_date user_last_modified_date user_status username phone_number]) }
+      it { expect(subject['phone_number']).to eq(phone_number) }
+
+      after { UserExample.ca_delete!(phone_number) }
     end
   end
 
   context '#ca_delete!' do
     context 'by phone_number as username' do
-      before { UserExample.ca_create!(attrs, username) }
+      before { UserExample.ca_create!(attrs, phone_number) }
 
-      let!(:username) { "+3333333333" }
-      let!(:attrs) { { phone_number: username } }
+      let!(:phone_number) { "+3333333333" }
+      let!(:attrs) { { phone_number: phone_number } }
 
-      it { expect(UserExample.ca_delete!(username).to_h).to eq({}) }
+      it { expect(UserExample.ca_delete!(phone_number).to_h).to eq({}) }
     end
   end
 
   context '#ca_find!' do
     context 'by phone_number as username' do
-      before { UserExample.ca_create!(attrs, username) }
+      before { UserExample.ca_create!(attrs, phone_number) }
 
-      let!(:username) { "+3333333333" }
-      let!(:attrs) { { phone_number: username } }
-      let!(:user) { UserExample.ca_find!(username) }
+      let!(:phone_number) { "+3333333333" }
+      let!(:attrs) { { phone_number: phone_number } }
+      let!(:user_keys) { UserExample.ca_find!(phone_number).keys }
 
-      it { expect(user.keys).to eq(%w[username user_create_date user_last_modified_date enabled user_status phone_number]) }
+      it { expect(user_keys).to eq(%w[username user_create_date user_last_modified_date enabled user_status phone_number]) }
 
-      after { UserExample.ca_delete!(username) }
+      after { UserExample.ca_delete!(phone_number) }
     end
 
     context 'by email as username' do
-      before { UserExample.ca_create!(attrs, username) }
+      before { UserExample.ca_create!(attrs, email) }
 
-      let!(:username) { "qwe@qwe.com" }
-      let!(:attrs) { { email: username } }
-      let!(:user) { UserExample.ca_find!(username) }
+      let!(:email) { "qwe@qwe.com" }
+      let!(:attrs) { { email: email } }
+      let!(:user_keys) { UserExample.ca_find!(email).keys }
 
-      it { expect(user.keys).to eq(%w[username user_create_date user_last_modified_date enabled user_status email]) }
+      it { expect(user_keys).to eq(%w[username user_create_date user_last_modified_date enabled user_status email]) }
 
-      after { UserExample.ca_delete!(username) }
+      after { UserExample.ca_delete!(email) }
     end
   end
 end

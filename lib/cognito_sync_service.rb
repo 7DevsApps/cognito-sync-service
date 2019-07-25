@@ -19,7 +19,7 @@ module CognitoSyncService
   # ]
   def ca_create!(attrs, username)
     c_attributes = converted_attributes(attrs)
-    cognito_provider.admin_create_user(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes)
+    cognito_provider.admin_create_user(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes).user
   end
 
   def ca_delete!(username)
