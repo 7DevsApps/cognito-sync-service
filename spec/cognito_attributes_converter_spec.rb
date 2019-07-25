@@ -20,7 +20,45 @@ RSpec.describe CognitoAttributesConverter do
 
   let(:user) { UserExample.new }
 
-  xdescribe '.converted_attributes' do
+  describe '.converted_attributes' do
+    context 'convert attributes to cognito' do
+      let(:attrs1) do
+        {
+          email: "sample@gmail.com",
+          phone_number: "+3123123123",
+          disabled_at: "2020-10-10",
+          restored_at: "2020-10-10",
+          has_picture: true,
+          not_white_list_attr: 1
+        }
+      end
+
+      let(:attrs2) do
+        {
+          "email" => "sample@gmail.com",
+          "phone_number" => "+3123123123",
+          "disabled_at" => "2020-10-10",
+          "restored_at" => "2020-10-10",
+          "has_picture" => true,
+          "not_white_list_attr" => 1
+        }
+      end
+
+      let(:cognito_attrs1) do
+        [
+          { name: "email",              value: "sample@gmail.com" },
+          { name: "phone_number",       value: "+3123123123" },
+          { name: "custom:disabled_at", value: "2020-10-10" },
+          { name: "custom:restored_at", value: "2020-10-10" },
+          { name: "custom:has_picture", value: true }
+        ]
+      end
+
+      context 'white list attributes' do
+        it { expect(user.converted_attributes(attrs1)).to eq(cognito_attrs1) }
+        it { expect(user.converted_attributes(attrs2)).to eq(cognito_attrs1) }
+      end
+    end
   end
 
   describe '.convert_to_cognito' do
