@@ -6,6 +6,12 @@ require 'cognito_sync_service.rb'
 require 'cognito_provider.rb'
 
 RSpec.describe CognitoSyncService do
+  before do
+    allow(UserExample).to receive(:cognito_provider).and_return(aws_provider)
+    allow(UserExample).to receive(:web_pool_id).and_return(pool_id)
+    allow(UserExample).to receive(:web_client_id).and_return(client_id)
+  end
+
   class UserExample
     extend ::CognitoSyncService
     include ::CognitoAttributesConverter
