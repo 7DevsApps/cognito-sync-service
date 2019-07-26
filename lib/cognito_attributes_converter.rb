@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 module CognitoAttributesConverter
-  def converted_attributes(attrs)
-    convert_to_cognito(attrs)
-  end
-
   def convert_to_cognito(attrs)
     cognito_attrs = attrs.map { |k, v| [k, v] }.to_h
 

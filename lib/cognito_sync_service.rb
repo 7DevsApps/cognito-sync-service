@@ -18,8 +18,9 @@ module CognitoSyncService
   #   {name: 'phone_number', value: '+12......0'}
   # ]
   def ca_create!(attrs, username)
-    c_attributes = converted_attributes(attrs)
-    cognito_provider.admin_create_user(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes).user
+    c_attributes = convert_to_cognito(attrs)
+    user = cognito_provider.admin_create_user(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes).user
+    convert_from_cognito(user)
   end
 
   def ca_delete!(username)
