@@ -14,6 +14,7 @@ group :development, :test do
   gem 'pry', '~> 0.10', require: false
   gem 'pry-byebug', '~> 3.4'
   gem 'pry-doc', '~> 1.0.0', require: false
+  gem 'rb-readline'
 
   gem 'factory_bot', '~> 4.8'
   gem 'rspec', '~> 3.6'
