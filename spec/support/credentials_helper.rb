@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-
-# We assume that you will store your aws credentials in credentials.enc.yml or have similar file like credentials.yml
+# We assume that you will store your aws credentials in credentials.enc.yml or have similar file like spec_credentials.yml
 require 'yaml'
-CREDENTIALS = YAML.load_file('spec/support/credentials.yml')
+CREDENTIALS = YAML.load_file('spec/support/spec_credentials.yml')
 
 module CredentialsHelper
   def aws_provider
