@@ -4,10 +4,10 @@ __#ca_create!(username)__
 
 
 
-> Create user from you ruby project
+> In order to create user on Cognito
 > - Username should be equal __email/phone_number/random_uniq_string__ depend on you cognito user pool settings - [cognito username attribute doc](https://docs.aws.amazon.com/en_us/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-usernames)
 
-## Example
+## Usage
 ```ruby
 class UserExample
   extend ::CognitoSyncService
