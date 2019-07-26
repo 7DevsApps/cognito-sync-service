@@ -3,7 +3,6 @@
 require 'bundler/setup'
 require 'pry'
 require 'cognito_sync_service'
-require './spec/helpers/attributes_converter_helper.rb'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
