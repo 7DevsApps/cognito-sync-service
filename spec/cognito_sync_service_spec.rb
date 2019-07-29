@@ -29,10 +29,8 @@ RSpec.describe CognitoSyncService do
       let!(:attrs) { { phone_number: phone_number } }
       let(:user) { UserExample.ca_create!(attrs, phone_number) }
 
-      subject { UserExample.convert_from_cognito(user) }
-
-      it { expect(subject.keys).to match_array(%w[enabled user_create_date user_last_modified_date user_status username phone_number]) }
-      it { expect(subject['phone_number']).to eq(phone_number) }
+      it { expect(user.keys).to match_array(%w[enabled user_create_date user_last_modified_date user_status username phone_number]) }
+      it { expect(user['phone_number']).to eq(phone_number) }
 
       after { UserExample.ca_delete!(phone_number) }
     end
