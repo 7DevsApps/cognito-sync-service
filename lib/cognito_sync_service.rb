@@ -11,12 +11,8 @@ module CognitoSyncService
   include ::CognitoProvider
 
   # username - can be email, phone_number or custom string depend on you cognito pool settings
-  # attrs - hash of  user attributes which will be saved in cognito pool
-  # cognito contain attributes in array of hashes format:
-  # attrs = [
-  #   {name: 'email', value: 'qwe@qwe,com'},
-  #   {name: 'phone_number', value: '+12......0'}
-  # ]
+  # attrs - hash of user attributes which will be saved in cognito pool
+  # attrs = { email: 'qwe@qwe,com', phone_number:  '+12......0'}
   def ca_create!(attrs, username)
     c_attributes = convert_to_cognito(attrs)
     user = cognito_provider.admin_create_user(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes).user
@@ -32,6 +28,14 @@ module CognitoSyncService
   def ca_find!(username)
     user = cognito_provider.admin_get_user(user_pool_id: web_pool_id, username: username)
     convert_from_cognito(user)
+  end
+
+  # username - can be email, phone_number or custom string depend on you cognito pool settings
+  # attrs - hash of user attributes which will be saved in cognito pool
+  # attrs = { email: 'qwe@qwe,com', phone_number:  '+12......0'}
+  def ca_update!(attrs, username)
+    c_attributes = convert_to_cognito(attrs)
+    cognito_provider.admin_update_user_attributes(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes)
   end
 
   # user can be disable by email or phone_number depend on cognito pool settings
