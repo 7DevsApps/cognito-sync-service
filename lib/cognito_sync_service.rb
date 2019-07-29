@@ -36,6 +36,7 @@ module CognitoSyncService
   def ca_update!(attrs, username)
     c_attributes = convert_to_cognito(attrs)
     cognito_provider.admin_update_user_attributes(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes)
+    ca_find!(username)
   end
 
   # user can be disable by email or phone_number depend on cognito pool settings

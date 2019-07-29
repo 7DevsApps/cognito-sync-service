@@ -96,9 +96,7 @@ RSpec.describe CognitoSyncService do
     it 'should be change email attribute' do
       UserExample.ca_find!(phone_number)
       expect(user['email']).to eq("example1@gmail.com")
-
-      UserExample.ca_update!(new_attrs, phone_number)
-      expect(UserExample.ca_find!(phone_number)['email']).to eq("example2@gmail.com")
+      expect(UserExample.ca_update!(new_attrs, phone_number)['email']).to eq("example2@gmail.com")
     end
 
     after { UserExample.ca_delete!(phone_number) }
