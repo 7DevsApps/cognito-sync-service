@@ -9,14 +9,11 @@ __*#ca_delete!(username)*__
 ## Usage
 
 ```ruby
-
 class UserExample
   extend ::CognitoSyncService
 end
 
-attrs = { phone_number: '+1111111111' }
-
-UserExample.ca_create!(attrs, attrs[:phone_number]) =>
+UserExample.ca_delete!(username) =>
 ```
 
 __Output__

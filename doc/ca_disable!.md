@@ -9,7 +9,6 @@ __*#ca_disable!(username)*__
 ## Usage
 
 ```ruby
-
 class UserExample
   extend ::CognitoSyncService
 end
