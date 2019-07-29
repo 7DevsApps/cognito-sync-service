@@ -23,7 +23,7 @@ RSpec.describe CognitoSyncService do
     expect(CognitoSyncService::VERSION).not_to be nil
   end
 
-  context '#ca_create!' do
+  describe '#ca_create!' do
     context 'with valid phone_number in username' do
       let!(:phone_number) { "+3333333333" }
       let!(:attrs) { { phone_number: phone_number } }
@@ -36,7 +36,7 @@ RSpec.describe CognitoSyncService do
     end
   end
 
-  context '#ca_delete!' do
+  describe '#ca_delete!' do
     context 'by phone_number as username' do
       before { UserExample.ca_create!(attrs, phone_number) }
 
@@ -47,7 +47,7 @@ RSpec.describe CognitoSyncService do
     end
   end
 
-  context '#ca_find!' do
+  describe '#ca_find!' do
     context 'by phone_number as username' do
       before { UserExample.ca_create!(attrs, phone_number) }
 
@@ -59,7 +59,6 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(phone_number) }
     end
-
     context 'by email as username' do
       before { UserExample.ca_create!(attrs, email) }
 
@@ -70,6 +69,22 @@ RSpec.describe CognitoSyncService do
       it { expect(user_keys).to eq(%w[username user_create_date user_last_modified_date enabled user_status email]) }
 
       after { UserExample.ca_delete!(email) }
+    end
+  end
+
+  describe '#ca_disable!' do
+    context 'by phone_number as username' do
+      let!(:phone_number) { "+3333333333" }
+      let!(:attrs) { { phone_number: phone_number } }
+      let!(:user) { UserExample.ca_create!(attrs, phone_number) }
+
+      it do
+        expect(user['enabled']).to eq(true)
+        UserExample.ca_disable!(phone_number)
+        expect(UserExample.ca_find!(phone_number)['enabled']).to eq(false)
+      end
+
+      after { UserExample.ca_delete!(phone_number) }
     end
   end
 end

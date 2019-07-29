@@ -23,6 +23,7 @@ module CognitoSyncService
     convert_from_cognito(user)
   end
 
+  # user can be delete by email or phone_number depend on cognito pool settings
   def ca_delete!(username)
     cognito_provider.admin_delete_user(user_pool_id: web_pool_id, username: username)
   end
@@ -31,5 +32,10 @@ module CognitoSyncService
   def ca_find!(username)
     user = cognito_provider.admin_get_user(user_pool_id: web_pool_id, username: username)
     convert_from_cognito(user)
+  end
+
+  # user can be disable by email or phone_number depend on cognito pool settings
+  def ca_disable!(username)
+    cognito_provider.admin_disable_user(user_pool_id: web_pool_id, username: username)
   end
 end
