@@ -23,7 +23,7 @@ RSpec.describe CognitoSyncService do
     expect(CognitoSyncService::VERSION).not_to be nil
   end
 
-  context '#ca_create!' do
+  describe '#ca_create!' do
     context 'with valid phone_number in username' do
       let!(:phone_number) { "+3333333333" }
       let!(:attrs) { { phone_number: phone_number } }
@@ -36,7 +36,7 @@ RSpec.describe CognitoSyncService do
     end
   end
 
-  context '#ca_delete!' do
+  describe '#ca_delete!' do
     context 'by phone_number as username' do
       before { UserExample.ca_create!(attrs, phone_number) }
 
@@ -47,7 +47,7 @@ RSpec.describe CognitoSyncService do
     end
   end
 
-  context '#ca_find!' do
+  describe '#ca_find!' do
     context 'by phone_number as username' do
       before { UserExample.ca_create!(attrs, phone_number) }
 
@@ -72,7 +72,7 @@ RSpec.describe CognitoSyncService do
     end
   end
 
-  context '#ca_disable!' do
+  describe '#ca_disable!' do
     context 'by phone_number as username' do
       let!(:phone_number) { "+3333333333" }
       let!(:attrs) { { phone_number: phone_number } }
