@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
 require 'bundler/setup'
 require 'pry'
 require 'cognito_sync_service'
