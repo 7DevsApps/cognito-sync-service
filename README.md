@@ -1,5 +1,7 @@
 # CognitoSyncService
 
+Aws Cognito user pool synchronizer
+
 - [CognitoSyncService](#cognitoSyncService)
   - [Installation](#installation)
   - [Usage](#usage)
