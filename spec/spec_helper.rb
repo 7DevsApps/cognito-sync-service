@@ -7,7 +7,6 @@ require 'pry'
 require 'cognito_sync_service'
 require 'support/credentials_helper'
 
-
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
