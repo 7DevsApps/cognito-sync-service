@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
+require 'simplecov'
+SimpleCov.start
 require 'bundler/setup'
 require 'pry'
 require 'cognito_sync_service'
 require 'support/credentials_helper'
+
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
