@@ -1,5 +1,7 @@
 # CognitoSyncService
 
+## [WIP] Now used [hardcoded auth_flow](https://github.com/MarkOsipenko/cognito-sync-service/blob/master/lib/cognito_sync_service.rb#L53) inside __#ca_initiate_auth!__. We expect this method will be more flexible in future
+
 __*#ca_initiate_auth!(username, password)*__
 
 > In order to perform the authentication flow, as an administrator on Cognito
