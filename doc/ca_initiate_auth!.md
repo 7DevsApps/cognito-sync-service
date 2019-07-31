@@ -30,7 +30,7 @@ __Output__
 ```
 
 __Note:__
-> if you need to retreive values from auth_result you can simply call it by its keys like:
+> If you need to retreive values from ```result``` you can simply call it by its keys like:
 ```ruby 
 result.challenge_name #=> "NEW_PASSWORD_REQUIRED"
 result.session #=> "E_-IQ-PFywvo2Q0_od1LFrIc5VxsNuMVq_Idjwvry8wmmtwKri2my2VJwr7tu45jXucSwIG0SRzestDK13slda_fdRR_AkNLsBT9AMqKtm7avy6Dq0QRKOjBdnjsMEKn4bClX9LO"
