@@ -45,6 +45,7 @@ module CognitoSyncService
   end
 
   # user can be authenticated by email or phone_number depend on cognito pool settings
+  # password can be constant or temporary
   def ca_initiate_auth!(username, password)
     cognito_provider.admin_initiate_auth(
       user_pool_id: web_pool_id,
