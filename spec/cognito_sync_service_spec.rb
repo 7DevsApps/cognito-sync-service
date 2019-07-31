@@ -101,4 +101,15 @@ RSpec.describe CognitoSyncService do
 
     after { UserExample.ca_delete!(phone_number) }
   end
+
+  describe '#ca_initiate_auth!' do
+    let!(:email) { "qwe@qwe.com" }
+    let!(:temporary_password) { 'Qazwsx-edc1!' }
+    let!(:attrs) { { email: email } }
+    let!(:user) { UserExample.ca_create!(attrs, email, temporary_password) }
+
+    it { expect(UserExample.ca_initiate_auth!(email, temporary_password).challenge_name).to eq('NEW_PASSWORD_REQUIRED') }
+
+    after { UserExample.ca_delete!(email) }
+  end
 end
