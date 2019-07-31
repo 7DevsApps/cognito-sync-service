@@ -13,7 +13,7 @@ module CognitoSyncService
   # username - can be email, phone_number or custom string depend on you cognito pool settings
   # attrs - hash of user attributes which will be saved in cognito pool
   # attrs = { email: 'qwe@qwe,com', phone_number:  '+12......0'}
-  def ca_create!(attrs, username, temporary_password=nil)
+  def ca_create!(attrs, username, temporary_password = nil)
     c_attributes = convert_to_cognito(attrs)
     user = cognito_provider.admin_create_user(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes, temporary_password: temporary_password).user
     convert_from_cognito(user)
