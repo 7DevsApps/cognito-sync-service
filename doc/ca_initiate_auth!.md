@@ -24,13 +24,11 @@ result = UserExample.ca_initiate_auth!(username, password)
 __Output__
 
 ```ruby
-{
   #<struct Aws::CognitoIdentityProvider::Types::AdminInitiateAuthResponse
    challenge_name="NEW_PASSWORD_REQUIRED",
    session="E_-IQ-PFywvo2Q0_od1LFrIc5VxsNuMVq_Idjwvry8wmmtwKri2my2VJwr7tu45jXucSwIG0SRzestDK13slda_fdRR_AkNLsBT9AMqKtm7avy6Dq0QRKOjBdnjsMEKn4bClX9LO",
    challenge_parameters={"USER_ID_FOR_SRP"=>"bbd455ea-e07a-382d-a7b5-7f04ef8827aa", "requiredAttributes"=>"[]", "userAttributes"=>"{\"email\":\"qwe@qwe.com\"}"},
    authentication_result=nil>
-}
 ```
 
 __Note:__
