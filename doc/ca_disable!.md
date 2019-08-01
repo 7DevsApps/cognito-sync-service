@@ -2,6 +2,8 @@
 
 __*#ca_disable!(username)*__
 
+### Synopsys
+
 > Disable user in cognito pool.
 >
 > Also check this doc [admin-disable-user](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/admin-disable-user.html) method

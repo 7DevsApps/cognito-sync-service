@@ -2,6 +2,8 @@
 
 __*#ca_delete!(username)*__
 
+### Synopsys
+
 > Delete user from cognito pool.
 >
 > Also check this doc [admin-delete-user](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/admin-delete-user.html) method

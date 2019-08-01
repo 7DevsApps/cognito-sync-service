@@ -112,4 +112,16 @@ RSpec.describe CognitoSyncService do
 
     after { UserExample.ca_delete!(email) }
   end
+
+  describe '#ca_respond_to_auth_challenge!' do
+    let!(:email) { "qwe@qwe.com" }
+    let!(:temporary_password) { 'Qazwsx-edc1!' }
+    let!(:attrs) { { email: email } }
+    let!(:user) { UserExample.ca_create!(attrs, email, temporary_password) }
+    let!(:auth_response) { UserExample.ca_initiate_auth!(email, temporary_password) }
+
+    it { expect(UserExample.ca_respond_to_auth_challenge!(email, temporary_password, auth_response.session).authentication_result.key?('access_token')).to eq(true) }
+
+    after { UserExample.ca_delete!(email) }
+  end
 end
