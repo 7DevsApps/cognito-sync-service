@@ -6,9 +6,9 @@ require 'cognito_pools_initializer.rb'
 require 'cognito_provider.rb'
 
 module CognitoSyncService
-  include ::CognitoAttributesConverter
-  include ::CognitoPoolsInitializer
   include ::CognitoProvider
+  include ::CognitoPoolsInitializer
+  include ::CognitoAttributesConverter
 
   # username - can be email, phone_number or custom string depend on you cognito pool settings
   # attrs - hash of user attributes which will be saved in cognito pool
