@@ -61,7 +61,7 @@ module CognitoSyncService
   # for now this method works only for password confirmation flow
   def ca_respond_to_auth_challenge!(username, password, session)
     cognito_provider.admin_respond_to_auth_challenge(
-    user_pool_id: web_pool_id,
+      user_pool_id: web_pool_id,
       client_id: web_client_id,
       challenge_name: 'NEW_PASSWORD_REQUIRED',
       session: session,
