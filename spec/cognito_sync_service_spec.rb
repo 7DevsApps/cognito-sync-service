@@ -42,6 +42,15 @@ RSpec.describe CognitoSyncService do
 
       it { expect(UserExample.ca_delete!(phone_number).to_h).to eq({}) }
     end
+    context 'by nonexistent phone_number as username' do
+      let!(:phone_number) { "+124423234252" }
+
+      it do
+        expect { UserExample.ca_delete!(phone_number) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::UserNotFoundException && error.message == "User not found."
+        end
+      end
+    end
   end
 
   describe '#ca_find!' do
@@ -68,10 +77,10 @@ RSpec.describe CognitoSyncService do
       after { UserExample.ca_delete!(email) }
     end
     context 'by nonexistent email as username' do
-      let!(:phone_number) { 'qaaz@ads.com' }
+      let!(:email) { 'qaaz@ads.com' }
 
       it do
-        expect { UserExample.ca_find!(phone_number) }.to raise_error do |error|
+        expect { UserExample.ca_find!(email) }.to raise_error do |error|
           error == Aws::CognitoIdentityProvider::Errors::UserNotFoundException && error.message == "User not found."
         end
       end
