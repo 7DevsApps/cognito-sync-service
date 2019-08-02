@@ -37,11 +37,23 @@ In common case  you need __CRUD__ functionality, __synchronization__, between yo
 1. __CRUD__ functionality from you application
 2. `(WIP)` __Synchronize__ you database users with user_pools
 3. `(WIP)`__Handling authorization__
-*methods naming:*
+
+## List of methods
+
+*naming note:*
+> methods naming was inspired by cognito naming but we added a prefix for a slight difference
 
 `ca`_action => `cognito_admin`_action
 
 `c`_action => `cognito`_action
+
+ - [#ca_create!](doc/ca_create!.md)
+ - [#ca_update!](doc/ca_update!.md)
+ - [#ca_delete!](doc/ca_delete!.md)
+ - [#ca_disable!](doc/ca_disable!.md)
+ - [#ca_find!](doc/ca_find!.md)
+ - [#ca_initiate_auth!](doc/ca_initiate_auth!.md)
+ - [#ca_respond_to_auth_challenge!](doc/ca_respond_to_auth_challenge!.md)
 
 ## Development
 
