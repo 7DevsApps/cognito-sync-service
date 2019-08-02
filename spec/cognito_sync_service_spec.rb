@@ -101,6 +101,15 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(phone_number) }
     end
+    context 'by nonexistent phone_number as username' do
+      let!(:phone_number) { "+103030030303" }
+
+      it do
+        expect { UserExample.ca_disable!(phone_number) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::UserNotFoundException && error.message == "User not found."
+        end
+      end
+    end
   end
 
   describe '#ca_update!' do
