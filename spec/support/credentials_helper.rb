@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'aws-sdk-cognitoidentityprovider'
 # We assume that you will store your aws credentials in credentials.enc.yml or have similar file like spec_credentials.yml
 require 'yaml'
 CREDENTIALS = YAML.load_file('spec/support/spec_credentials.yml')

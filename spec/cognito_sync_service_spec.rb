@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require 'cognito_attributes_converter.rb'
-require 'cognito_pools_initializer.rb'
 require 'cognito_sync_service.rb'
-require 'cognito_provider.rb'
 
 RSpec.describe CognitoSyncService do
   before do
@@ -14,9 +11,6 @@ RSpec.describe CognitoSyncService do
 
   class UserExample
     extend ::CognitoSyncService
-    include ::CognitoAttributesConverter
-    include ::CognitoProvider
-    include ::CognitoPoolsInitializer
   end
 
   it 'has a version number' do
@@ -33,6 +27,9 @@ RSpec.describe CognitoSyncService do
       it { expect(user['phone_number']).to eq(phone_number) }
 
       after { UserExample.ca_delete!(phone_number) }
+    end
+
+    xcontext 'with temporary password' do
     end
   end
 
