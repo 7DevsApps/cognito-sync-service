@@ -145,7 +145,6 @@ RSpec.describe CognitoSyncService do
       let!(:incorrect_password) { 'bbbbbbb' }
 
       it do
-        binding.pry
         expect { UserExample.ca_initiate_auth!(email, incorrect_password) }.to raise_error do |error|
           error == Aws::CognitoIdentityProvider::Errors::NotAuthorizedException && error.message == "Incorrect username or password."
         end
