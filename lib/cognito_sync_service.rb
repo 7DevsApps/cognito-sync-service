@@ -2,20 +2,25 @@
 
 require 'cognito_sync_service/version'
 require 'cognito_attributes_converter.rb'
-require 'cognito_pools_initializer.rb'
-require 'cognito_provider.rb'
+# require 'cognito_pools_initializer.rb'
+# require 'cognito_provider.rb'
 
 module CognitoSyncService
-  include ::CognitoProvider
-  include ::CognitoPoolsInitializer
   include ::CognitoAttributesConverter
 
   # username - can be email, phone_number or custom string depend on you cognito pool settings
   # attrs - hash of user attributes which will be saved in cognito pool
   # attrs = { email: 'qwe@qwe,com', phone_number:  '+12......0'}
   def ca_create!(attrs, username, temporary_password = nil)
-    c_attributes = convert_to_cognito(attrs)
-    user = cognito_provider.admin_create_user(user_pool_id: web_pool_id, username: username, user_attributes: c_attributes, temporary_password: temporary_password).user
+    user_attributes = {
+      user_pool_id: web_pool_id,
+      username: username,
+      user_attributes: convert_to_cognito(attrs),
+      temporary_password: temporary_password
+    }.compact
+
+    user = cognito_provider.admin_create_user(user_attributes).user
+
     convert_from_cognito(user)
   end
 

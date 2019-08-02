@@ -10,10 +10,7 @@ RSpec.describe CognitoAttributesConverter do
   end
 
   class UserExample
-    extend ::CognitoSyncService
-    include ::CognitoAttributesConverter
-    include ::CognitoProvider
-    include ::CognitoPoolsInitializer
+    include ::CognitoSyncService
 
     def cognito_default_attr_keys
       [:email, "phone_number"]
