@@ -113,7 +113,7 @@ RSpec.describe CognitoSyncService do
   end
 
   describe '#ca_update!' do
-    let(:phone_number) { "+111111111" }
+    let!(:phone_number) { "+111111111" }
     let!(:user) { UserExample.ca_create!({ email: "example1@gmail.com", phone_number: phone_number }, phone_number) }
     let!(:new_attrs) { { email: "example2@gmail.com" } }
 
@@ -121,6 +121,16 @@ RSpec.describe CognitoSyncService do
       UserExample.ca_find!(phone_number)
       expect(user['email']).to eq("example1@gmail.com")
       expect(UserExample.ca_update!(new_attrs, phone_number)['email']).to eq("example2@gmail.com")
+    end
+
+    context 'update with invalid email' do
+      let!(:invalid_attrs) { { email: "qwrrw.com21" } }
+
+      it do
+        expect { UserExample.ca_update!(invalid_attrs, phone_number) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::InvalidParameterException && error.message == "Invalid email address format."
+        end
+      end
     end
 
     after { UserExample.ca_delete!(phone_number) }
