@@ -87,7 +87,9 @@ end
     @web_client_id ||= ENV['aws']['client_id']
   end
 ```
+
 > or come up with any other way to implement the method __cognito_prodiver__
+
 ```ruby
   def web_pool_id
     'us-east-1_DaexV9pOc' # Pool Id example
@@ -97,10 +99,13 @@ end
     '6d1rss9carten3pkl0134658g5p' # Client id example
   end
 ```
+
 ### Step 3
+
 > Above methods should be `extend` ~~not included~~  to you class
 >
 > In other words, the methods should be available to the `class` but not to the instance.
+
 ```ruby
 # example with User class
 User.cognito_provider # => #<Aws::CognitoIdentityProvider::Client>
@@ -110,15 +115,19 @@ User.web_client_id # => '6d1rss9carten3pkl0134658g5p'
 
 ### Step 4
 > Add required lib to you class
+
 ```ruby
 require 'cognito_sync_service'
 ```
+
 > extend cognito sync service in you class
+
 ```ruby
 extend CognitoSyncService
 ```
 
 ### Primitive example
+
 ```ruby
 require 'aws-sdk-cognitoidentityprovider'
 require 'cognito_sync_service'
@@ -150,6 +159,7 @@ User.ca_create!({phone_number: "+1111111111"}, "+1111111111")
 #}
 
 ```
+
 ## List of methods
 
 *naming note:*
@@ -184,8 +194,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 Everyone interacting in the CognitoSyncService project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/MarkOsipenko/cognito_sync_service/blob/master/CODE_OF_CONDUCT.md).
 ## Contacts
 
+https://7devs.co/contact?section=contact-form
 https://t.me/hakmatmao
-
 
 ## Status
 [![Maintainability](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/maintainability)](https://codeclimate.com/github/MarkOsipenko/cognito-sync-service/maintainability)

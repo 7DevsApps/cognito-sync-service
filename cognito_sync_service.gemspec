@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'Aws Cognito user pool synchronizer'
   spec.description   = 'Aws Cognito user pool synchronizer'
-  spec.homepage      = 'https://github.com/MarkOsipenko/cognito-sync-service'
+  spec.homepage      = 'https://github.com/7DevsApps/cognito-sync-service'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org.
@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
     spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = 'https://github.com/MarkOsipenko/cognito-sync-service'
-    spec.metadata['changelog_uri'] = 'https://github.com/MarkOsipenko/cognito-sync-service'
+    spec.metadata['source_code_uri'] = 'https://github.com/7DevsApps/cognito-sync-service'
+    spec.metadata['changelog_uri'] = 'https://github.com/7DevsApps/cognito-sync-service'
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
       'public gem pushes.'
