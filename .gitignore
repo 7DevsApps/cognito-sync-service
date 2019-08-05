@@ -1,3 +1,4 @@
+*.gem
 /.bundle/
 /.yardoc
 /_yardoc/
@@ -5,8 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
-
-.evn
+.env
 
 # rspec failure tracking
 .rspec_status

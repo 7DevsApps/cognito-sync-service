@@ -56,3 +56,7 @@ Metrics/MethodLength:
 
 Naming/UncommunicativeMethodParamName:
   Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - 'lib/cognito-sync-service.rb'
