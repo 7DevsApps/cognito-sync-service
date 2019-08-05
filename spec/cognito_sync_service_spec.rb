@@ -165,14 +165,30 @@ RSpec.describe CognitoSyncService do
   end
 
   describe '#ca_respond_to_auth_challenge!' do
-    let!(:email) { "qwe@qwe.com" }
-    let!(:temporary_password) { 'Qazwsx-edc1!' }
-    let!(:attrs) { { email: email } }
-    let!(:user) { UserExample.ca_create!(attrs, email, temporary_password) }
-    let!(:auth_response) { UserExample.ca_initiate_auth!(email, temporary_password) }
+    context 'with valid data' do
+      let!(:email) { "qwe@qwe.com" }
+      let!(:temporary_password) { 'Qazwsx-edc1!' }
+      let!(:attrs) { { email: email } }
+      let!(:user) { UserExample.ca_create!(attrs, email, temporary_password) }
+      let!(:auth_response) { UserExample.ca_initiate_auth!(email, temporary_password) }
 
-    it { expect(UserExample.ca_respond_to_auth_challenge!(email, temporary_password, auth_response.session).authentication_result.key?('access_token')).to eq(true) }
+      it { expect(UserExample.ca_respond_to_auth_challenge!(email, temporary_password, auth_response.session).authentication_result.key?('access_token')).to eq(true) }
 
-    after { UserExample.ca_delete!(email) }
+      after { UserExample.ca_delete!(email) }
+    end
+    context 'with invalid data' do
+      let!(:email) { "qwe@qwe.com" }
+      let!(:temporary_password) { 'Qazwsx-edc1!' }
+      let!(:attrs) { { email: email } }
+      let!(:user) { UserExample.ca_create!(attrs, email, temporary_password) }
+      let!(:auth_response) { UserExample.ca_initiate_auth!(email, temporary_password) }
+
+      it 'should raise Invalid session provided' do
+        expect { UserExample.ca_respond_to_auth_challenge!(email, temporary_password, '4f43a5c946f33516bae12d81a39e3c40b55bb4f1') }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::CodeMismatchException && error.message == "Invalid session provided"
+        end
+      end
+      after { UserExample.ca_delete!(email) }
+    end
   end
 end
