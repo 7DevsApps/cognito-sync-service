@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['mark.osipenko@gmail.com']
 
   spec.summary       = 'Aws Cognito user pool synchronizer'
-  spec.description   = 'Aws Cognito user pool synchronizer'
+  spec.description   = 'With this gem you can implement: CRUD functionality from you application, synchronize you database users with user_pools, handling authorization'
   spec.homepage      = 'https://github.com/7DevsApps/cognito-sync-service'
   spec.license       = 'MIT'
 
@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'aws-sdk-cognitoidentity', '~> 1.0.0.rc7'
+  spec.add_dependency 'aws-sdk-cognitoidentity', '~> 1.0'
   spec.add_dependency 'aws-sdk-cognitoidentityprovider', '~> 1.12'
   spec.add_dependency 'aws-sdk-cognitosync', '~> 1.6'
   spec.add_dependency 'aws-sdk-ec2', '~> 1'
