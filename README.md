@@ -16,7 +16,7 @@ Aws Cognito user pool synchronizer
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cognito-sync-service', '~> 0.2.0'
+gem 'cognito-sync-service', '~> 0.3.0'
 ```
 
 And then execute:
