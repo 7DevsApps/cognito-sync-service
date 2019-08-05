@@ -15,7 +15,7 @@ class UserExample
   extend ::CognitoSyncService
 end
 
-UserExample.ca_disable!(username) =>
+UserExample.ca_disable!(username)
 ```
 
 __Output__

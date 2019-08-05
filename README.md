@@ -98,9 +98,9 @@ end
   end
 ```
 ### Step 3
-> Above methods should be `extend` not ~~included~~  to you class
+> Above methods should be `extend` ~~not included~~  to you class
 >
-> In other words, the methods should be available to the `class` but not to the ~~instance~~
+> In other words, the methods should be available to the `class` but not to the instance.
 ```ruby
 # example with User class
 User.cognito_provider # => #<Aws::CognitoIdentityProvider::Client>

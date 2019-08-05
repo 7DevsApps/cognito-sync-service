@@ -4,7 +4,7 @@
 
 __*#ca_respond_to_auth_challenge!(username, password, session)*__
 
-__Note:__ 
+__Note:__
 
 >The session is issued by calling #ca_initiate_auth! method.
 
