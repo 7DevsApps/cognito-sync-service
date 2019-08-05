@@ -1,6 +1,6 @@
 # CognitoSyncService
 
-## [WIP] Now used [hardcoded challenge_name](https://github.com/MarkOsipenko/cognito-sync-service/blob/master/lib/cognito_sync_service.rb#L66) inside __#ca_respond_to_auth_challenge!__. We expect this method will be more flexible in future
+## [WIP] Now used [hardcoded challenge_name](https://github.com/MarkOsipenko/cognito-sync-service/blob/master/lib/cognito-sync-service.rb#L66) inside __#ca_respond_to_auth_challenge!__. We expect this method will be more flexible in future
 
 __*#ca_respond_to_auth_challenge!(username, password, session)*__
 

@@ -117,7 +117,7 @@ User.web_client_id # => '6d1rss9carten3pkl0134658g5p'
 > Add required lib to you class
 
 ```ruby
-require 'cognito_sync_service'
+require 'cognito-sync-service'
 ```
 
 > extend cognito sync service in you class
@@ -130,7 +130,7 @@ extend CognitoSyncService
 
 ```ruby
 require 'aws-sdk-cognitoidentityprovider'
-require 'cognito_sync_service'
+require 'cognito-sync-service'
 
 class User
   extend CognitoSyncService
@@ -191,7 +191,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the CognitoSyncService project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/MarkOsipenko/cognito_sync_service/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the CognitoSyncService project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/MarkOsipenko/cognito-sync-service/blob/master/CODE_OF_CONDUCT.md).
 ## Contacts
 
 https://7devs.co/contact?section=contact-form

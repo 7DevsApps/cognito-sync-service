@@ -4,7 +4,7 @@ require 'simplecov'
 SimpleCov.start
 require 'bundler/setup'
 require 'pry'
-require 'cognito_sync_service'
+require 'cognito-sync-service'
 require 'support/credentials_helper'
 
 RSpec.configure do |config|

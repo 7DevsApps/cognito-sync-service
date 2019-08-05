@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'cognito_sync_service.rb'
+require 'cognito-sync-service.rb'
 
 RSpec.describe CognitoSyncService do
   before do

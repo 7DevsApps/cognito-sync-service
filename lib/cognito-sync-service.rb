@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'cognito_sync_service/version'
+require 'cognito-sync-service/version'
 require 'cognito_attributes_converter.rb'
 # require 'cognito_pools_initializer.rb'
 # require 'cognito_provider.rb'
