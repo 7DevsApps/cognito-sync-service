@@ -48,6 +48,60 @@ RSpec.describe CognitoSyncService do
         end
       end
     end
+    context 'with invalid username(numeric)' do
+      let!(:email) { "12345" }
+      let!(:attrs) { { email: email } }
+
+      it do
+        expect { UserExample.ca_create!(attrs, email) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::InvalidParameterException && error.message == "Username should be either an email or a phone number"
+        end
+      end
+    end
+    context 'with invalid password(too short)' do
+      let!(:email) { "qwe@qwe.com" }
+      let!(:temporary_password) { 'zaza' }
+      let!(:attrs) { { email: email } }
+
+      it do
+        expect { UserExample.ca_create!(attrs, email, temporary_password) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::InvalidParameterException && error.message == "Password not long enough"
+        end
+      end
+    end
+    context 'with invalid password(only numbers)' do
+      let!(:email) { "qwe@qwe.com" }
+      let!(:temporary_password) { '11111111111111111' }
+      let!(:attrs) { { email: email } }
+
+      it do
+        expect { UserExample.ca_create!(attrs, email, temporary_password) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::InvalidParameterException && error.message == "Password must have lowercase characters"
+        end
+      end
+    end
+    context 'with invalid password(only characters)' do
+      let!(:email) { "qwe@qwe.com" }
+      let!(:temporary_password) { 'aADDSlkfdflkfddsDS' }
+      let!(:attrs) { { email: email } }
+
+      it do
+        expect { UserExample.ca_create!(attrs, email, temporary_password) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::InvalidParameterException && error.message == "Password must have numeric characters"
+        end
+      end
+    end
+    context 'with invalid password(only lowercase characters)' do
+      let!(:email) { "qwe@qwe.com" }
+      let!(:temporary_password) { 'kskdsdksdkskdskdksd' }
+      let!(:attrs) { { email: email } }
+
+      it do
+        expect { UserExample.ca_create!(attrs, email, temporary_password) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::InvalidParameterException && error.message == "Password must have uppercase characters"
+        end
+      end
+    end
   end
 
   describe '#ca_delete!' do
