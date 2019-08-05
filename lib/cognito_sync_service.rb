@@ -51,6 +51,9 @@ module CognitoSyncService
 
   # user can be authenticated by email or phone_number depend on cognito pool settings
   # password can be constant or temporary
+  # "auth_flow" arg may differ depend on you authorization rules, we hardcode ADMIN_NO_SRP_AUTH like a common case
+  # In future this action be more flexible
+  # List of auth_flow args here - https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/initiate-auth.html
   def ca_initiate_auth!(username, password)
     cognito_provider.admin_initiate_auth(
       user_pool_id: web_pool_id,

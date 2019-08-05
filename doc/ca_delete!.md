@@ -15,7 +15,7 @@ class UserExample
   extend ::CognitoSyncService
 end
 
-UserExample.ca_delete!(username) =>
+UserExample.ca_delete!(username)
 ```
 
 __Output__
