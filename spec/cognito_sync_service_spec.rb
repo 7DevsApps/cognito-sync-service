@@ -28,6 +28,7 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(phone_number) }
     end
+
     context 'with email as username and temporary password' do
       let!(:email) { "qwe@qwe.com" }
       let!(:temporary_password) { 'Qazwsx-edc1!' }
@@ -38,6 +39,7 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(email) }
     end
+
     context 'with invalid email as username' do
       let!(:email) { "@invalid.email.com" }
       let!(:attrs) { { email: email } }
@@ -48,6 +50,7 @@ RSpec.describe CognitoSyncService do
         end
       end
     end
+
     context 'with invalid username(numeric)' do
       let!(:email) { "12345" }
       let!(:attrs) { { email: email } }
@@ -58,6 +61,7 @@ RSpec.describe CognitoSyncService do
         end
       end
     end
+
     context 'with invalid password(too short)' do
       let!(:email) { "qwe@qwe.com" }
       let!(:temporary_password) { 'zaza' }
@@ -69,6 +73,7 @@ RSpec.describe CognitoSyncService do
         end
       end
     end
+
     context 'with invalid password(only numbers)' do
       let!(:email) { "qwe@qwe.com" }
       let!(:temporary_password) { '11111111111111111' }
@@ -80,6 +85,7 @@ RSpec.describe CognitoSyncService do
         end
       end
     end
+
     context 'with invalid password(only characters)' do
       let!(:email) { "qwe@qwe.com" }
       let!(:temporary_password) { 'aADDSlkfdflkfddsDS' }
@@ -91,6 +97,7 @@ RSpec.describe CognitoSyncService do
         end
       end
     end
+
     context 'with invalid password(only lowercase characters)' do
       let!(:email) { "qwe@qwe.com" }
       let!(:temporary_password) { 'kskdsdksdkskdskdksd' }
@@ -113,6 +120,7 @@ RSpec.describe CognitoSyncService do
 
       it { expect(UserExample.ca_delete!(phone_number).to_h).to eq({}) }
     end
+
     context 'by nonexistent phone_number as username' do
       let!(:phone_number) { "+124423234252" }
 
@@ -136,6 +144,7 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(phone_number) }
     end
+
     context 'by email as username' do
       before { UserExample.ca_create!(attrs, email) }
 
@@ -147,6 +156,7 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(email) }
     end
+
     context 'by nonexistent email as username' do
       let!(:email) { 'qaaz@ads.com' }
 
@@ -172,6 +182,7 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(phone_number) }
     end
+
     context 'by nonexistent phone_number as username' do
       let!(:phone_number) { "+103030030303" }
 
@@ -218,6 +229,7 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(email) }
     end
+
     context 'by incorrect password' do
       let!(:email) { "q212e@qwe.com" }
       let!(:temporary_password) { 'Qazwsx-edc1!' }
@@ -247,6 +259,7 @@ RSpec.describe CognitoSyncService do
 
       after { UserExample.ca_delete!(email) }
     end
+
     context 'with invalid data' do
       let!(:email) { "qwe@qwe.com" }
       let!(:temporary_password) { 'Qazwsx-edc1!' }
@@ -259,6 +272,7 @@ RSpec.describe CognitoSyncService do
           error == Aws::CognitoIdentityProvider::Errors::CodeMismatchException && error.message == "Invalid session provided"
         end
       end
+
       after { UserExample.ca_delete!(email) }
     end
   end
