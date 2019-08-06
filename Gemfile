@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+gem 'rake', '~> 11.2', '>= 11.2.2'
+
 group :development, :test do
   gem 'aws-sdk-cognitoidentity', '~> 1.0.0.rc7'
   gem 'aws-sdk-cognitoidentityprovider', '~> 1.12'
@@ -22,6 +24,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'dotenv-rails'
   gem 'rspec-its', '~> 1.2'
   gem 'rspec-simplecov', '~> 0.2'
   gem 'simplecov', '~> 0.14'

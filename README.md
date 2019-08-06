@@ -1,6 +1,14 @@
 # CognitoSyncService
 
+## Status
+[![Maintainability](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/maintainability)](https://codeclimate.com/github/MarkOsipenko/cognito-sync-service/maintainability)
+[![Build Status](https://travis-ci.com/7DevsApps/cognito-sync-service.svg?branch=master)](https://travis-ci.com/7DevsApps/cognito-sync-service)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/test_coverage)](https://codeclimate.com/github/MarkOsipenko/cognito-sync-service/test_coverage)
+
+
 Aws Cognito user pool synchronizer
+
+## Content
 
 - [CognitoSyncService](#cognitoSyncService)
   - [Installation](#installation)
@@ -31,7 +39,7 @@ Or install it yourself as:
 
 [AWS Cognito](https://aws.amazon.com/ru/cognito/) let use [list of methods](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/index.html) or this [SDK  methods for ruby](https://docs.aws.amazon.com/sdkforruby/api/Aws/CognitoIdentity/Client.html).
 
-In common case  you need __CRUD__ functionality, __synchronization__, between you DB and Cognito pools and __handling authorization__.
+In common case  you need __CRUD__ functionality, __synchronization__, between your DB and Cognito pools and __handling authorization__.
 
 #### With this gem you can implement:
 1. __CRUD__ functionality from you application
@@ -195,8 +203,5 @@ Everyone interacting in the CognitoSyncService project’s codebases, issue trac
 ## Contacts
 
 https://7devs.co/contact?section=contact-form
-https://t.me/hakmatmao
 
-## Status
-[![Maintainability](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/maintainability)](https://codeclimate.com/github/MarkOsipenko/cognito-sync-service/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/test_coverage)](https://codeclimate.com/github/MarkOsipenko/cognito-sync-service/test_coverage)
+https://t.me/hakmatmao
