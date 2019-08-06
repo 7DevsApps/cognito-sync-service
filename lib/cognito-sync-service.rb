@@ -76,4 +76,9 @@ module CognitoSyncService
       challenge_responses: { USERNAME: username, NEW_PASSWORD: password }
     )
   end
+
+  def find_by_access_token!(access_token)
+    user = cognito_provider.get_user(access_token: access_token)
+    convert_from_cognito(user)
+  end
 end

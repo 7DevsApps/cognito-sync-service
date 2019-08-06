@@ -276,4 +276,25 @@ RSpec.describe CognitoSyncService do
       after { UserExample.ca_delete!(email) }
     end
   end
+
+  describe '#find_by_access_token!' do
+    let!(:email) { "email@test.com" }
+    let!(:temporary_password) { 'Qazwsx-edc1!' }
+    let!(:attrs) { { email: email } }
+    let!(:user) { UserExample.ca_create!(attrs, email, temporary_password) }
+    let!(:init_auth) { UserExample.ca_initiate_auth!(email, temporary_password) }
+    let!(:respond) { UserExample.ca_respond_to_auth_challenge!(email, temporary_password, init_auth.session) }
+
+    it 'should fetch user by access token' do
+      expect(UserExample.find_by_access_token!(respond.authentication_result.access_token).keys).to match_array(%w[username email])
+    end
+
+    it 'should raise error' do
+      expect { UserExample.find_by_access_token!('invalidAccessToken') }.to raise_error do |error|
+        error == Aws::CognitoIdentityProvider::Errors::NotAuthorizedException && error.message == "Invalid Access Token"
+      end
+    end
+
+    after { UserExample.ca_delete!(email) }
+  end
 end

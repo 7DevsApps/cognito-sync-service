@@ -11,5 +11,4 @@
 # rspec failure tracking
 .rspec_status
 .idea/
-/spec/support/spec_credentials.yml
 .DS_Store
