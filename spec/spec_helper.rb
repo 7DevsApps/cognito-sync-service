@@ -6,6 +6,8 @@ require 'bundler/setup'
 require 'pry'
 require 'cognito-sync-service'
 require 'support/credentials_helper'
+require 'dotenv'
+Dotenv.load('.env')
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
