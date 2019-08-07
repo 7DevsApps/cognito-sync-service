@@ -41,8 +41,11 @@ __Output__
 }
 ```
 
-###In case of passing invalid access token you will get AWS error
+__Error output__
+
+### In case of passing invalid access token you will get AWS error
 
 ```ruby
-UserExample.find_by_access_token!("invalid_access_token") #=> Aws::CognitoIdentityProvider::Errors::NotAuthorizedException: Invalid Access Token
+UserExample.find_by_access_token!("invalid_access_token")
+#=> Aws::CognitoIdentityProvider::Errors::NotAuthorizedException: Invalid Access Token
 ```

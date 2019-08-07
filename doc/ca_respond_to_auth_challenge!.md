@@ -45,8 +45,11 @@ __Output__
    new_device_metadata=nil>>
 ```
 
-###In case of passing invalid session you will get AWS error
+__Error output__
+
+### In case of passing invalid session you will get AWS error
 
 ```ruby
-UserExample.ca_respond_to_auth_challenge!(username, password, 'invalid_session') #=> Aws::CognitoIdentityProvider::Errors::CodeMismatchException: Invalid session provided
+UserExample.ca_respond_to_auth_challenge!(username, password, 'invalid_session')
+#=> Aws::CognitoIdentityProvider::Errors::CodeMismatchException: Invalid session provided
 ```
