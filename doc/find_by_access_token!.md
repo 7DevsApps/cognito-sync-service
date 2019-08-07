@@ -8,7 +8,9 @@ __*#find_by_access_token!(access_token)*__
 > - The access token returned by the server response to get information about the user.
 
 Cognito return data in format with __user_attributes__ key
+
 # cognito-idp example
+
 ```
 #<struct Aws::CognitoIdentityProvider::Types::GetUserResponse
  username="ba9faac3-2291-4f56-9c6b-a85471445726",
@@ -17,6 +19,7 @@ Cognito return data in format with __user_attributes__ key
  preferred_mfa_setting=nil,
  user_mfa_setting_list=nil>
 ```
+
 > Also check this doc [get-user](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/get-user.html) method
 
 ## Usage
@@ -37,7 +40,9 @@ __Output__
   "username"=>"dae4900d-0984-4ac0-9ab0-14505e52d50c"
 }
 ```
+
 ###In case of passing invalid access token you will get AWS error
+
 ```ruby
 UserExample.find_by_access_token!("invalid_access_token") #=> Aws::CognitoIdentityProvider::Errors::NotAuthorizedException: Invalid Access Token
 ```

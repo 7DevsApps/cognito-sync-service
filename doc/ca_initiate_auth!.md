@@ -46,6 +46,7 @@ result.authentication_result #=> nil
 ```authentication_result``` is only returned if the caller does not need to pass another challenge. If the caller does need to pass another challenge before it gets tokens, ChallengeName , ChallengeParameters , and Session are returned.
 
 ###In case of passing invalid email or invalid password you will get AWS error
+
 ```ruby
 UserExample.ca_initiate_auth!('invalid_username', 'invalid_password') #=> Aws::CognitoIdentityProvider::Errors::NotAuthorizedException: Incorrect username or password.
 ```

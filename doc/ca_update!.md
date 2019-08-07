@@ -10,8 +10,10 @@ __*#ca_update!(username)*__
 > Also check this doc [admin-update-user-attributes](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/admin-update-user-attributes.html) method
 
 ## Usage
+
 `Attention!!!`
 changing username (alias for you login) not tested yet
+
 ```ruby
 class UserExample
   extend ::CognitoSyncService
@@ -24,7 +26,9 @@ attrs = {
 
 UserExample.ca_update!(attrs, attrs[:phone_number])
 ```
+
 __Output__
+
 ```ruby
 {
   "email"=>"example2@gmail.com",
@@ -36,7 +40,9 @@ __Output__
   "phone_number"=>"+111111111"
 }
 ```
+
 ###In case of passing invalid attributes you will get AWS error
+
 ```ruby
 invalid_attrs = {
   { email: 'invalidemail@@@example....com' },

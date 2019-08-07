@@ -8,6 +8,7 @@ __*#ca_find!(username)*__
 > - Username should be equal __email/phone_number/random_uniq_string__ depend on you cognito user pool settings - [cognito username attribute doc](https://docs.aws.amazon.com/en_us/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-usernames)
 
 Cognito return data in format with __user_attributes__ key
+
 # cognito-idp example
 ```
 <struct Aws::CognitoIdentityProvider::Types::AdminGetUserResponse
@@ -50,7 +51,9 @@ __Output__
   "username"=>"dae4900d-0984-4ac0-9ab0-14505e52d50c"
 }
 ```
+
 ###In case of passing invalid or nonexistent(in your Cognito Pool) username you will get AWS error
+
 ```ruby
 UserExample.ca_find!('invalid_username') #=> Aws::CognitoIdentityProvider::Errors::UserNotFoundException: User not found.
 ```

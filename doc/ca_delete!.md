@@ -23,7 +23,9 @@ __Output__
 ```ruby
  {}
 ```
+
 ###In case of passing invalid or nonexistent(in your Cognito Pool) username you will get AWS error
+
 ```ruby
 UserExample.ca_delete!('invalid_username') #=> Aws::CognitoIdentityProvider::Errors::UserNotFoundException: User not found.
 ```
