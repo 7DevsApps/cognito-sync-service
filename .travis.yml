@@ -8,3 +8,6 @@ branches:
 rvm:
   - 2.5.3
 before_install: gem install bundler -v 2.0.1
+env:
+  global:
+    - CC_TEST_REPORTER_ID='445d9b9f6189382202cc35adc7f9959cf62985857be1174d394e407ad8db8a0c'
