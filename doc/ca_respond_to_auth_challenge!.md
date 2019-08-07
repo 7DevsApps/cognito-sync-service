@@ -28,26 +28,25 @@ result = UserExample.ca_respond_to_auth_challenge!(username, password, session)
 __Output__
 
 ```ruby
-=> #<struct Aws::CognitoIdentityProvider::Types::AdminRespondToAuthChallengeResponse
- challenge_name=nil,
- session=nil,
- challenge_parameters={},
- authentication_result=
+#<struct Aws::CognitoIdentityProvider::Types::AdminRespondToAuthChallengeResponse
+  session=nil,
+  challenge_parameters={},
+  challenge_name=nil,
+  authentication_result=
   #<struct Aws::CognitoIdentityProvider::Types::AuthenticationResultType
-   access_token=
-    "eyJraWQiOiJ3T0RTTmYyTXRheDJPM24lD2xMc1RoM1hoOXV6V3BBcEpubjdMMlwvMXo4bz0iLCJhbGciOiJSUzI1NiJ9cHgmlc6WWxXPw36GuQ91jiTisnvtJWus-XvOOcLK4qsQ",
-   expires_in=3600,
-   token_type="Bearer",
-   refresh_token=
-    "eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2-Dmc6dms9iukp_YUfeO6Vj-P9sOom_khf3FWTMz1Mb2dI8vjhvG_kK8Gu-5rw",
-   id_token=
-    "eyJraWQiOiJSejZRdXRPbXVlNk1vdEZpUm83M1lsTWJSZjc4Qxv4MUk0K29BeDhRNmxzPSIsImFsZyI6IlJTMjU2In0.hftrLf9--JjgZYAREDXYM8aJkLkeuXCSnM5fkOqYn8DQ",
-   new_device_metadata=nil>>
+    access_token= "eyJraWQiOiJ3T0RTTmYyTXRheDJPM24lD2xMc1RoM1hoOXV6V3BBcEpubjdMMlwvMXo4bz0iLCJhbGciOiJSUzI1NiJ9cHgmlc6WWxXPw36GuQ91jiTisnvtJWus-XvOOcLK4qsQ",
+    expires_in=3600,
+    token_type="Bearer",
+    refresh_token= "eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2-Dmc6dms9iukp_YUfeO6Vj-P9sOom_khf3FWTMz1Mb2dI8vjhvG_kK8Gu-5rw",
+    id_token= "eyJraWQiOiJSejZRdXRPbXVlNk1vdEZpUm83M1lsTWJSZjc4Qxv4MUk0K29BeDhRNmxzPSIsImFsZyI6IlJTMjU2In0.hftrLf9--JjgZYAREDXYM8aJkLkeuXCSnM5fkOqYn8DQ",
+    new_device_metadata=nil
+  >
+>
 ```
 
 __Error output__
 
-### In case of passing invalid session you will get AWS error
+In case of passing invalid session you will get AWS error
 
 ```ruby
 UserExample.ca_respond_to_auth_challenge!(username, password, 'invalid_session')

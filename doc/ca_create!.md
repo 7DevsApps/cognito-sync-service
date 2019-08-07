@@ -49,8 +49,6 @@ UserExample.ca_create!(attrs, attrs[:email])
 #=> Aws::CognitoIdentityProvider::Errors::InvalidParameterException: Invalid email address format.
 ```
 
-### Depending on your Cognito User Pool settings – you will get different validation messages
-
 _For example minimum password length set to 8 characters_
 
 ```ruby

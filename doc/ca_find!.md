@@ -54,7 +54,7 @@ __Output__
 __Error output__
 
 
-### In case of passing invalid or nonexistent(in your Cognito Pool) username you will get AWS error
+In case of passing invalid or nonexistent(in your Cognito Pool) username you will get AWS error
 
 ```ruby
 UserExample.ca_find!('invalid_username')

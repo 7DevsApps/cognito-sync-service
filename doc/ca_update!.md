@@ -41,13 +41,15 @@ __Output__
 }
 ```
 
-###In case of passing invalid attributes you will get AWS error
+__Error output__
+
+In case of passing invalid attributes you will get AWS error
 
 ```ruby
-invalid_attrs = {
+attrs = {
   { email: 'invalidemail@@@example....com' },
   { phone_number: '+1111111111' }
 }
 
-UserExample.ca_update!(invalid_attrs, invalid_attrs[:phone_number]) #=> Aws::CognitoIdentityProvider::Errors::InvalidParameterException: Invalid email address format.
+UserExample.ca_update!(attrs, attrs[:phone_number]) #=> Aws::CognitoIdentityProvider::Errors::InvalidParameterException: Invalid email address format.
 ```

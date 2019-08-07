@@ -47,7 +47,7 @@ result.authentication_result #=> nil
 
 __Error output__
 
-### In case of passing invalid email or invalid password you will get AWS error
+In case of passing invalid email or invalid password you will get AWS error
 
 ```ruby
 UserExample.ca_initiate_auth!('invalid_username', 'invalid_password') #=> Aws::CognitoIdentityProvider::Errors::NotAuthorizedException: Incorrect username or password.
