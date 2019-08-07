@@ -1,10 +1,11 @@
 # CognitoSyncService
 
-## Status
-[![Maintainability](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/maintainability)](https://codeclimate.com/github/MarkOsipenko/cognito-sync-service/maintainability)
-[![Build Status](https://travis-ci.com/7DevsApps/cognito-sync-service.svg?branch=master)](https://travis-ci.com/7DevsApps/cognito-sync-service)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/test_coverage)](https://codeclimate.com/github/7DevsApps/cognito-sync-service/test_coverage)
+<img src="logo.png" alt="logo" width="200"/>
 
+## Status
+[![Maintainability](https://api.codeclimate.com/v1/badges/7bbc9677e91e5561a35d/maintainability)](https://codeclimate.com/github/7DevsApps/cognito-sync-service/maintainability)
+[![Build Status](https://travis-ci.com/7DevsApps/cognito-sync-service.svg?branch=master)](https://travis-ci.com/7DevsApps/cognito-sync-service)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/7bbc9677e91e5561a35d/test_coverage)](https://codeclimate.com/github/7DevsApps/cognito-sync-service/test_coverage)
 
 Aws Cognito user pool synchronizer
 
