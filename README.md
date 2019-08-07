@@ -3,7 +3,7 @@
 ## Status
 [![Maintainability](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/maintainability)](https://codeclimate.com/github/MarkOsipenko/cognito-sync-service/maintainability)
 [![Build Status](https://travis-ci.com/7DevsApps/cognito-sync-service.svg?branch=master)](https://travis-ci.com/7DevsApps/cognito-sync-service)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/test_coverage)](https://codeclimate.com/github/MarkOsipenko/cognito-sync-service/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b90c232e049a226e25d9/test_coverage)](https://codeclimate.com/github/7DevsApps/cognito-sync-service/test_coverage)
 
 
 Aws Cognito user pool synchronizer
@@ -185,7 +185,7 @@ User.ca_create!({phone_number: "+1111111111"}, "+1111111111")
  - [#ca_initiate_auth!](doc/ca_initiate_auth!.md)
  - [#ca_respond_to_auth_challenge!](doc/ca_respond_to_auth_challenge!.md)
  - [#find_by_access_token!](doc/find_by_access_token!.md)
- 
+
 
 ## Development
 
