@@ -214,7 +214,7 @@ RSpec.describe CognitoSyncService do
       let!(:phone_number) { "+103030030303" }
 
       it do
-        expect { UserExample.ca_disable!(phone_number) }.to raise_error do |error|
+        expect { UserExample.ca_enable!(phone_number) }.to raise_error do |error|
           error == Aws::CognitoIdentityProvider::Errors::UserNotFoundException && error.message == "User not found."
         end
       end
