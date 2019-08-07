@@ -194,6 +194,33 @@ RSpec.describe CognitoSyncService do
     end
   end
 
+  describe '#ca_enable!' do
+    context 'by phone_number as username' do
+      let!(:phone_number) { "+3333333333" }
+      let!(:attrs) { { phone_number: phone_number } }
+      let!(:user) { UserExample.ca_create!(attrs, phone_number) }
+      let!(:disabled_user) { UserExample.ca_disable!(phone_number) }
+
+      it do
+        expect(UserExample.ca_find!(phone_number)['enabled']).to eq(false)
+        UserExample.ca_enable!(phone_number)
+        expect(UserExample.ca_find!(phone_number)['enabled']).to eq(true)
+      end
+
+      after { UserExample.ca_delete!(phone_number) }
+    end
+
+    context 'by nonexistent phone_number as username' do
+      let!(:phone_number) { "+103030030303" }
+
+      it do
+        expect { UserExample.ca_disable!(phone_number) }.to raise_error do |error|
+          error == Aws::CognitoIdentityProvider::Errors::UserNotFoundException && error.message == "User not found."
+        end
+      end
+    end
+  end
+
   describe '#ca_update!' do
     let!(:phone_number) { "+111111111" }
     let!(:user) { UserExample.ca_create!({ email: "example1@gmail.com", phone_number: phone_number }, phone_number) }

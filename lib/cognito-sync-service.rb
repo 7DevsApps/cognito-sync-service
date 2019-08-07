@@ -49,6 +49,10 @@ module CognitoSyncService
     cognito_provider.admin_disable_user(user_pool_id: web_pool_id, username: username)
   end
 
+  def ca_enable!(username)
+    cognito_provider.admin_enable_user(user_pool_id: web_pool_id, username: username)
+  end
+
   # user can be authenticated by email or phone_number depend on cognito pool settings
   # password can be constant or temporary
   # "auth_flow" arg may differ depend on you authorization rules, we hardcode ADMIN_NO_SRP_AUTH like a common case
