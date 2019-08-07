@@ -50,3 +50,7 @@ __Output__
   "username"=>"dae4900d-0984-4ac0-9ab0-14505e52d50c"
 }
 ```
+###In case of passing invalid or nonexistent(in your Cognito Pool) username you will get AWS error
+```ruby
+UserExample.ca_find!('invalid_username') #=> Aws::CognitoIdentityProvider::Errors::UserNotFoundException: User not found.
+```

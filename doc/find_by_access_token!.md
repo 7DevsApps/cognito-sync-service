@@ -37,3 +37,7 @@ __Output__
   "username"=>"dae4900d-0984-4ac0-9ab0-14505e52d50c"
 }
 ```
+###In case of passing invalid access token you will get AWS error
+```ruby
+UserExample.find_by_access_token!("invalid_access_token") #=> Aws::CognitoIdentityProvider::Errors::NotAuthorizedException: Invalid Access Token
+```
