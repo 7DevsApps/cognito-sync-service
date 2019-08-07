@@ -39,5 +39,17 @@ __Output__
   "user_status"=>"FORCE_CHANGE_PASSWORD",
   "phone_number"=>"+111111111"
 }
+```
 
+__Error output__
+
+In case of passing invalid attributes you will get AWS error
+
+```ruby
+attrs = {
+  { email: 'invalidemail@@@example....com' },
+  { phone_number: '+1111111111' }
+}
+
+UserExample.ca_update!(attrs, attrs[:phone_number]) #=> Aws::CognitoIdentityProvider::Errors::InvalidParameterException: Invalid email address format.
 ```
