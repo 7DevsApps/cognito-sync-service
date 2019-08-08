@@ -326,21 +326,24 @@ RSpec.describe CognitoSyncService do
   end
 
   describe '#ca_refresh_tokens!' do
-    before { UserExample.ca_create!(attrs, email, password) }
-    before { UserExample.ca_initiate_auth!(email, password) }
+    before do
+      UserExample.ca_create!(attrs, email, password)
+      UserExample.ca_initiate_auth!(email, password)
+    end
 
     let!(:email) { "qwe@aww.com" }
     let!(:password) { "Qazwsx-edc1!" }
     let!(:attrs) { { email: email } }
     let!(:session) { UserExample.ca_initiate_auth!(email, password).session }
     let!(:respond) { UserExample.ca_respond_to_auth_challenge!(email, password, session) }
+    let!(:auth_result) { UserExample.ca_refresh_tokens!(respond.authentication_result.refresh_token).authentication_result }
 
     it 'should return refreshed access token' do
-      expect(UserExample.ca_refresh_tokens!(respond.authentication_result.refresh_token).authentication_result.access_token).to_not eq(respond.authentication_result.access_token)
+      expect(auth_result.access_token).to_not eq(respond.authentication_result.access_token)
     end
 
     it 'should return refreshed id token' do
-      expect(UserExample.ca_refresh_tokens!(respond.authentication_result.refresh_token).authentication_result.id_token).to_not eq(respond.authentication_result.id_token)
+      expect(auth_result.access_token).to_not eq(respond.authentication_result.id_token)
     end
 
     it 'should raise Invalid Refresh Token' do
