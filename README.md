@@ -3,9 +3,11 @@
 <img src="logo.png" alt="logo" width="200"/>
 
 ## Status
+[![Gem Version](https://badge.fury.io/rb/cognito-sync-service.svg)](https://badge.fury.io/rb/cognito-sync-service)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7bbc9677e91e5561a35d/maintainability)](https://codeclimate.com/github/7DevsApps/cognito-sync-service/maintainability)
 [![Build Status](https://travis-ci.com/7DevsApps/cognito-sync-service.svg?branch=master)](https://travis-ci.com/7DevsApps/cognito-sync-service)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7bbc9677e91e5561a35d/test_coverage)](https://codeclimate.com/github/7DevsApps/cognito-sync-service/test_coverage)
+[![Inline docs](http://inch-ci.org/github/7DevsApps/cognito-sync-service.svg?branch=master&style=shields)](http://inch-ci.org/github/7DevsApps/cognito-sync-service)
 
 Aws Cognito user pool synchronizer
 
