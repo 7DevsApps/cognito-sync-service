@@ -70,6 +70,19 @@ module CognitoSyncService
     )
   end
 
+  # user can refresh access token and id token by taking in a valid refresh token
+  # REFRESH_TOKEN_AUTH - Authentication flow for refreshing the access token and ID token by supplying a valid refresh token
+  def ca_refresh_tokens!(refresh_token)
+    cognito_provider.admin_initiate_auth(
+      user_pool_id: web_pool_id,
+      client_id: web_client_id,
+      auth_flow: 'REFRESH_TOKEN_AUTH',
+      auth_parameters: {
+        REFRESH_TOKEN: refresh_token
+      }
+    )
+  end
+
   # for now this method works only for password confirmation flow
   def ca_respond_to_auth_challenge!(username, password, session)
     cognito_provider.admin_respond_to_auth_challenge(
