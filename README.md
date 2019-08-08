@@ -188,6 +188,7 @@ User.ca_create!({phone_number: "+1111111111"}, "+1111111111")
  - [#ca_disable!](doc/ca_disable!.md)
  - [#ca_find!](doc/ca_find!.md)
  - [#ca_initiate_auth!](doc/ca_initiate_auth!.md)
+ - [#ca_refresh_tokens!](doc/ca_refresh_tokens!.md)
  - [#ca_respond_to_auth_challenge!](doc/ca_respond_to_auth_challenge!.md)
  - [#find_by_access_token!](doc/find_by_access_token!.md)
 
