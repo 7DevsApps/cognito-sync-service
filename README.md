@@ -8,6 +8,7 @@
 [![Build Status](https://travis-ci.com/7DevsApps/cognito-sync-service.svg?branch=master)](https://travis-ci.com/7DevsApps/cognito-sync-service)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7bbc9677e91e5561a35d/test_coverage)](https://codeclimate.com/github/7DevsApps/cognito-sync-service/test_coverage)
 [![Inline docs](http://inch-ci.org/github/7DevsApps/cognito-sync-service.svg?branch=master&style=shields)](http://inch-ci.org/github/7DevsApps/cognito-sync-service)
+[![Built with love](built_with_pain_from_cognito.png)](https://rmosolgo.github.io/react-badges/)
 
 Aws Cognito user pool synchronizer
 
