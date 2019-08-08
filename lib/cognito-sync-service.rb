@@ -49,6 +49,7 @@ module CognitoSyncService
     cognito_provider.admin_disable_user(user_pool_id: web_pool_id, username: username)
   end
 
+  # user can be enable by email or phone_number depend on cognito pool settings
   def ca_enable!(username)
     cognito_provider.admin_enable_user(user_pool_id: web_pool_id, username: username)
   end
@@ -70,7 +71,7 @@ module CognitoSyncService
     )
   end
 
-  # user can refresh access token and id token by taking in a valid refresh token
+  # user can refresh access token and id token by passing in a valid refresh token
   # REFRESH_TOKEN_AUTH - Authentication flow for refreshing the access token and ID token by supplying a valid refresh token
   def ca_refresh_tokens!(refresh_token)
     cognito_provider.admin_initiate_auth(
@@ -94,6 +95,7 @@ module CognitoSyncService
     )
   end
 
+  # return user attributes by access token
   def find_by_access_token!(access_token)
     user = cognito_provider.get_user(access_token: access_token)
     convert_from_cognito(user)
