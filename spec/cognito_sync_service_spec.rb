@@ -316,9 +316,36 @@ RSpec.describe CognitoSyncService do
       expect(UserExample.find_by_access_token!(respond.authentication_result.access_token).keys).to match_array(%w[username email])
     end
 
-    it 'should raise error' do
+    it 'should raise Invalid Access Token' do
       expect { UserExample.find_by_access_token!('invalidAccessToken') }.to raise_error do |error|
         error == Aws::CognitoIdentityProvider::Errors::NotAuthorizedException && error.message == "Invalid Access Token"
+      end
+    end
+
+    after { UserExample.ca_delete!(email) }
+  end
+
+  describe '#ca_refresh_tokens!' do
+    before { UserExample.ca_create!(attrs, email, password) }
+    before { UserExample.ca_initiate_auth!(email, password) }
+
+    let!(:email) { "qwe@aww.com" }
+    let!(:password) { "Qazwsx-edc1!" }
+    let!(:attrs) { { email: email } }
+    let!(:session) { UserExample.ca_initiate_auth!(email, password).session }
+    let!(:respond) { UserExample.ca_respond_to_auth_challenge!(email, password, session) }
+
+    it 'should return refreshed access token' do
+      expect(UserExample.ca_refresh_tokens!(respond.authentication_result.refresh_token).authentication_result.access_token).to_not eq(respond.authentication_result.access_token)
+    end
+
+    it 'should return refreshed id token' do
+      expect(UserExample.ca_refresh_tokens!(respond.authentication_result.refresh_token).authentication_result.id_token).to_not eq(respond.authentication_result.id_token)
+    end
+
+    it 'should raise Invalid Refresh Token' do
+      expect { UserExample.ca_refresh_tokens!('invalid_refresh_token') }.to raise_error do |error|
+        error == Aws::CognitoIdentityProvider::Errors::NotAuthorizedException && error.message == "Invalid Refresh Token"
       end
     end
 
