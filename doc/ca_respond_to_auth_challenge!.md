@@ -43,6 +43,17 @@ __Output__
   >
 >
 ```
+__Note:__
+
+> If you need to retreive `access_token` or `id_token` from ```result``` you can simply call it by its keys like:
+
+```ruby
+result.authentication_result.access_token 
+#=> "eyJraWQiOiJ3T0RTTmYyTXRheDJPM24lD2xMc1RoM1hoOXV6V3BBcEpubjdMMlwvMXo4bz0iLCJhbGciOiJSUzI1NiJ9cHgmlc6WWxXPw36GuQ91jiTisnvtJWus-"
+
+result.authentication_result.id_token 
+#=> "eyJjdHkiOiJKV1QiLCJlbmMiOiJBMjU2-Dmc6dms9iukp_YUfeO6Vj-P9sOom_khf3FWTMz1Mb2dI8vjhvG_kK8Gu-5rw" 
+```
 
 __Error output__
 
