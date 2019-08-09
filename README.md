@@ -10,8 +10,6 @@
 [![Inline docs](http://inch-ci.org/github/7DevsApps/cognito-sync-service.svg?branch=master&style=shields)](http://inch-ci.org/github/7DevsApps/cognito-sync-service)
 [![Built with love](built_with_pain_from_cognito.png)](https://rmosolgo.github.io/react-badges/)
 
-Aws Cognito user pool synchronizer
-
 ## Content
 
 - [CognitoSyncService](#cognitoSyncService)

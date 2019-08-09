@@ -43,7 +43,7 @@ __Output__
 
 __Error output__
 
-### In case of passing invalid access token you will get AWS error
+In case of passing invalid access token you will get AWS error
 
 ```ruby
 UserExample.c_find_by_access_token!("invalid_access_token")
