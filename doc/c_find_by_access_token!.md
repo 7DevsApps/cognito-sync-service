@@ -1,6 +1,6 @@
 # CognitoSyncService
 
-__*#find_by_access_token!(access_token)*__
+__*#c_find_by_access_token!(access_token)*__
 
 ### Synopsys
 
@@ -29,7 +29,7 @@ class UserExample
   extend CognitoSyncService
 end
 
-UserExample.find_by_access_token!("iOiJKV1QiLCJlbmMiOiJBMjU2-Dmc6dms9iukp_YUfeO6Vj-P9sOom_khf3FWTMz1Mb2dI8v")
+UserExample.c_find_by_access_token!("iOiJKV1QiLCJlbmMiOiJBMjU2-Dmc6dms9iukp_YUfeO6Vj-P9sOom_khf3FWTMz1Mb2dI8v")
 ```
 
 __Output__
@@ -46,6 +46,6 @@ __Error output__
 ### In case of passing invalid access token you will get AWS error
 
 ```ruby
-UserExample.find_by_access_token!("invalid_access_token")
+UserExample.c_find_by_access_token!("invalid_access_token")
 #=> Aws::CognitoIdentityProvider::Errors::NotAuthorizedException: Invalid Access Token
 ```
