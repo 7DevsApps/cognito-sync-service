@@ -96,7 +96,7 @@ module CognitoSyncService
   end
 
   # return user attributes by access token
-  def find_by_access_token!(access_token)
+  def c_find_by_access_token!(access_token)
     user = cognito_provider.get_user(access_token: access_token)
     convert_from_cognito(user)
   end

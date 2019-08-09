@@ -304,7 +304,7 @@ RSpec.describe CognitoSyncService do
     end
   end
 
-  describe '#find_by_access_token!' do
+  describe '#c_find_by_access_token!' do
     let!(:email) { "email@test.com" }
     let!(:temporary_password) { 'Qazwsx-edc1!' }
     let!(:attrs) { { email: email } }
@@ -313,11 +313,11 @@ RSpec.describe CognitoSyncService do
     let!(:respond) { UserExample.ca_respond_to_auth_challenge!(email, temporary_password, init_auth.session) }
 
     it 'should fetch user by access token' do
-      expect(UserExample.find_by_access_token!(respond.authentication_result.access_token).keys).to match_array(%w[username email])
+      expect(UserExample.c_find_by_access_token!(respond.authentication_result.access_token).keys).to match_array(%w[username email])
     end
 
     it 'should raise Invalid Access Token' do
-      expect { UserExample.find_by_access_token!('invalidAccessToken') }.to raise_error do |error|
+      expect { UserExample.c_find_by_access_token!('invalidAccessToken') }.to raise_error do |error|
         error == Aws::CognitoIdentityProvider::Errors::NotAuthorizedException && error.message == "Invalid Access Token"
       end
     end
