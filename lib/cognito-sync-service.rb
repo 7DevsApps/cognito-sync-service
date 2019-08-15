@@ -95,6 +95,16 @@ module CognitoSyncService
     )
   end
 
+  # works with any user
+  # after this method has been performed your account_status will be FORCE_CHANGE_PASSWORD
+  def ca_set_user_password!(username, password)
+    cognito_provider.admin_set_user_password(
+      user_pool_id: web_pool_id,
+      username: username,
+      password: password
+    )
+  end
+
   # return user attributes by access token
   def c_find_by_access_token!(access_token)
     user = cognito_provider.get_user(access_token: access_token)

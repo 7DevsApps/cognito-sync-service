@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+# frozen_string_literal: trueg
 
 require 'cognito-sync-service.rb'
 
@@ -350,6 +350,22 @@ RSpec.describe CognitoSyncService do
       expect { UserExample.ca_refresh_tokens!('invalid_refresh_token') }.to raise_error do |error|
         error == Aws::CognitoIdentityProvider::Errors::NotAuthorizedException && error.message == "Invalid Refresh Token"
       end
+    end
+
+    after { UserExample.ca_delete!(email) }
+  end
+
+  describe '#ca_set_user_password!' do
+    before { UserExample.ca_create!(attrs, email, old_password) }
+
+    let!(:email) { "qwe@qwe.com" }
+    let!(:attrs) { { email: email } }
+    let!(:old_password) { "Qazwsx-edc1!" }
+    let!(:new_password) { "Qwer-ty1!" }
+
+    it 'should change password' do
+      expect(UserExample.ca_set_user_password!(email, new_password).to eq({}))
+      expect(UserExample.ca_initiate_auth!(email, new_password).challenge_name).to eq('NEW_PASSWORD_REQUIRED')
     end
 
     after { UserExample.ca_delete!(email) }
