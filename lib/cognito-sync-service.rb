@@ -102,7 +102,7 @@ module CognitoSyncService
       user_pool_id: web_pool_id,
       username: username,
       password: password
-    )
+    ).to_h
   end
 
   # return user attributes by access token

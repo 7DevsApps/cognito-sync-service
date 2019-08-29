@@ -1,4 +1,4 @@
-# frozen_string_literal: trueg
+# frozen_string_literal: true
 
 require 'cognito-sync-service.rb'
 
@@ -364,12 +364,13 @@ RSpec.describe CognitoSyncService do
     let!(:old_password) { "Qazwsx-edc1!" }
     let!(:new_password) { "Qwer-ty1!" }
 
-    it 'should change password' do
-      expect(UserExample.ca_set_user_password!(email, new_password).to_h).to eq({})
+    it 'should change password and status' do
+      expect(UserExample.ca_find!(email)['user_status']).to eq("FORCE_CHANGE_PASSWORD")
+      expect(UserExample.ca_set_user_password!(email, new_password)).to eq({})
       expect(UserExample.ca_initiate_auth!(email, new_password).challenge_name).to eq('NEW_PASSWORD_REQUIRED')
     end
 
-    it 'should raise error User not found.' do
+    it 'should raise error User not found' do
       expect { UserExample.ca_set_user_password!('nonexistenst_username', new_password) }.to raise_error do |error|
         error == Aws::CognitoIdentityProvider::Errors::UserNotFoundException && error.message == "User not found."
       end
