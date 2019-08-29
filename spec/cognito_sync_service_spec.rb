@@ -2,6 +2,7 @@
 
 require 'cognito-sync-service.rb'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe CognitoSyncService do
   before do
     allow(UserExample).to receive(:cognito_provider).and_return(aws_provider)
@@ -354,4 +355,34 @@ RSpec.describe CognitoSyncService do
 
     after { UserExample.ca_delete!(email) }
   end
+
+  describe '#ca_set_user_password!' do
+    before { UserExample.ca_create!(attrs, email, old_password) }
+
+    let!(:email) { "qwe@qwe.com" }
+    let!(:attrs) { { email: email } }
+    let!(:old_password) { "Qazwsx-edc1!" }
+    let!(:new_password) { "Qwer-ty1!" }
+
+    it 'should change password and status' do
+      expect(UserExample.ca_find!(email)['user_status']).to eq("FORCE_CHANGE_PASSWORD")
+      expect(UserExample.ca_set_user_password!(email, new_password)).to eq({})
+      expect(UserExample.ca_initiate_auth!(email, new_password).challenge_name).to eq('NEW_PASSWORD_REQUIRED')
+    end
+
+    it 'should raise error User not found' do
+      expect { UserExample.ca_set_user_password!('nonexistenst_username', new_password) }.to raise_error do |error|
+        error == Aws::CognitoIdentityProvider::Errors::UserNotFoundException && error.message == "User not found."
+      end
+    end
+
+    it 'should raise Password not too long' do
+      expect { UserExample.ca_set_user_password!(email, 'tempo') }.to raise_error do |error|
+        error == Aws::CognitoIdentityProvider::Errors::InvalidParameterException && error.message == "Password not long enough"
+      end
+    end
+
+    after { UserExample.ca_delete!(email) }
+  end
 end
+# rubocop:enable Metrics/BlockLength
