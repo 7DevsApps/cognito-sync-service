@@ -2,6 +2,7 @@
 
 require 'cognito-sync-service.rb'
 
+# rubocop:disable Metrics/BlockLength
 RSpec.describe CognitoSyncService do
   before do
     allow(UserExample).to receive(:cognito_provider).and_return(aws_provider)
@@ -383,3 +384,4 @@ RSpec.describe CognitoSyncService do
     after { UserExample.ca_delete!(email) }
   end
 end
+# rubocop:enable Metrics/BlockLength
