@@ -15,6 +15,7 @@
 - [CognitoSyncService](#cognitoSyncService)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [Methods](#list-of-methods)
   - [Development](#development)
   - [Contributing](#contributing)
   - [Contacts](#contacts)
