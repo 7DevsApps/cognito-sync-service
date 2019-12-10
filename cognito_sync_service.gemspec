@@ -7,8 +7,8 @@ require 'cognito-sync-service/version'
 Gem::Specification.new do |spec|
   spec.name          = 'cognito-sync-service'
   spec.version       = CognitoSyncService::VERSION
-  spec.authors       = ['Mark Osipenko']
-  spec.email         = ['mark.osipenko@gmail.com']
+  spec.authors       = ['Mark Osipenko', 'Andrey Aliabiev']
+  spec.email         = ['mark.osipenko@gmail.com', 'andrey.alyabyev23@gmail.com']
 
   spec.summary       = 'Aws Cognito user pool synchronizer'
   spec.description   = 'With this gem you can implement: CRUD functionality from you application, synchronize you database users with user_pools, handling authorization'
