@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rake', '~> 11.2', '>= 11.2.2'
+gem 'rake', '~> 12.3'
 
 group :development, :test do
   gem 'aws-sdk-cognitoidentity', '~> 1.0.0.rc7'
